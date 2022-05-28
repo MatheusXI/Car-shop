@@ -1,6 +1,6 @@
 export interface Vehicle {
   model: string;
-  year: Date;
+  year: number;
   color: string;
   status: boolean;
   buyValue: number;
