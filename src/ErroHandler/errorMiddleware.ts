@@ -1,5 +1,5 @@
-import { NextFunction, Request, Response } from "express";
-import HandleError from "./handleError";
+import { NextFunction, Request, Response } from 'express';
+import HandleError from './handleError';
 
 const errorMiddleware = (
   err: unknown,
