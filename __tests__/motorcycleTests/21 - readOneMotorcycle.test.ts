@@ -5,7 +5,7 @@ import { clearDatabase, closeDatabase } from '../utils/db';
 
 import * as motorcycleMock from '../utils/MotorcyclesMock';
 
-import server from '../../src/app';
+import server from '../../src/server';
 
 describe('21 - Crie uma rota para o endpoint /motorcycles/id onde seja possível listar uma única moto através do seu id', () => {
   beforeAll(async () => {

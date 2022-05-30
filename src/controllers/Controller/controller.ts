@@ -18,21 +18,25 @@ export default abstract class Controller<T> {
 
   constructor(protected service: Service<T>) {}
 
-  // abstract read(
-  //   req: Request,
-  //   res: Response<T | ResponseError>
-  // ): Promise<typeof res>;
+  abstract read(
+    req: Request,
+    res: Response<T[] | ResponseError>,
+    next: NextFunction
+  ): Promise<typeof res | void>;
   // abstract readOne(
   //   req: Request,
-  //   res: Response<T | ResponseError>
+  //   res: Response<T | ResponseError>,
+  //   next: NextFunction
   // ): Promise<typeof res>;
   // abstract update(
   //   req: Request,
-  //   res: Response<T | ResponseError>
+  //   res: Response<T | ResponseError>,
+  //   next: NextFunction
   // ): Promise<typeof res>;
   // abstract delete(
   //   req: Request,
-  //   res: Response<T | ResponseError>
+  //   res: Response<T | ResponseError>,
+  //   next: NextFunction
   // ): Promise<typeof res>;
   abstract create(
     req: Request,

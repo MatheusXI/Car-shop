@@ -15,10 +15,18 @@ export default class CarController extends Controller<Car> {
     return this._route;
   }
 
+  read = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const cars = await this.service.read();
+      return res.status(200).json(cars);
+    } catch (error) {
+      next(error);
+    }
+  };
+
   create = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const newCar = await this.service.create(req.body);
-      console.log(newCar, 'newCar controller');
       if (!newCar) throw new Error('erro');
 
       return res.status(201).json(newCar);

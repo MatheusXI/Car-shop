@@ -10,8 +10,7 @@ export default class CarService extends MongoService<Car> {
     this.create = async (obj: Car) => {
       const carSchema = new CarJoi();
       const isError = carSchema.validate(obj);
-      console.log(isError, 'iserror');
-  
+
       if (isError.error) throw new CustomError(400, 'Invalid inputs', 'joi');
 
       const newCar = await this.model.create(obj);

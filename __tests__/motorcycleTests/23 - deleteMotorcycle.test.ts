@@ -5,7 +5,7 @@ import { clearDatabase, closeDatabase } from '../utils/db';
 
 import * as motorcycleMock from '../utils/MotorcyclesMock';
 
-import server from '../../src/app';
+import server from '../../src/server';
 
 describe('23 - Crie uma rota para o endpoint /motorcycles/id para excluir os registros de uma moto', () => {
   beforeAll(async () => {
