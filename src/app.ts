@@ -1,24 +1,30 @@
+// src/server.ts
+
 import express, { Router } from 'express';
 import connectToDatabase from './connection';
+import errorMiddleware from './ErroHandler/errorMiddleware';
 
 class App {
-  public app: express.Application;
+  private app: express.Application;
 
   constructor() {
     this.app = express();
     this.app.use(express.json());
   }
 
-  public startServer(PORT: string | number = 3001): void {
+  public startServer(port = 3001) {
     connectToDatabase();
-    this.app.listen(
-      PORT,
-      () => console.log(`Server running here 👉 http://localhost:${PORT}`),
-    );
+    const actualPort = process.env.PORT || port;
+    return this.app.listen(actualPort, () =>
+      console.log('Estamos online na porta: ', actualPort));
   }
 
   public addRouter(router: Router) {
     this.app.use(router);
+  }
+
+  public addErro() {
+    this.app.use(errorMiddleware);
   }
 
   public getApp() {

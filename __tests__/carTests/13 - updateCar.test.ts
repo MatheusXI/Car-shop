@@ -5,7 +5,7 @@ import { clearDatabase, closeDatabase } from '../utils/db';
 
 import * as carMock from '../utils/CarsMock';
 
-import server from '../../src/server';
+import server from '../../src/app';
 
 describe('13 - Crie uma rota para o endpoint /cars/id, onde é possível atualizar o registro de um carro através do seu id', () => {
   beforeAll(async () => {
