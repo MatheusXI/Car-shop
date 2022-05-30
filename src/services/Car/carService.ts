@@ -17,5 +17,10 @@ export default class CarService extends MongoService<Car> {
 
       return newCar;
     };
+    this.readOne = async (id: string) => {
+      const car = await this.model.readOne(id);
+      if (!car) throw new CustomError(404, 'Object not found', 'cast');
+      return car;
+    };
   }
 }

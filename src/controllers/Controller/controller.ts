@@ -23,21 +23,21 @@ export default abstract class Controller<T> {
     res: Response<T[] | ResponseError>,
     next: NextFunction
   ): Promise<typeof res | void>;
-  // abstract readOne(
-  //   req: Request,
-  //   res: Response<T | ResponseError>,
-  //   next: NextFunction
-  // ): Promise<typeof res>;
+  abstract readOne(
+    req: Request,
+    res: Response<T | ResponseError>,
+    next: NextFunction
+  ): Promise<typeof res | void>;
   // abstract update(
   //   req: Request,
   //   res: Response<T | ResponseError>,
   //   next: NextFunction
-  // ): Promise<typeof res>;
+  // ): Promise<typeof res | void>;
   // abstract delete(
   //   req: Request,
   //   res: Response<T | ResponseError>,
   //   next: NextFunction
-  // ): Promise<typeof res>;
+  // ): Promise<typeof res | void>;
   abstract create(
     req: Request,
     res: Response<T | ResponseError>,

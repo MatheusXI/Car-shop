@@ -4,6 +4,15 @@ import CarService from '../../services/Car/carService';
 import Controller from '../Controller/controller';
 
 export default class CarController extends Controller<Car> {
+  readOne = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const car = await this.service.readOne(req.params.id);
+      return res.status(200).json(car);
+    } catch (error) {
+      next(error);
+    }
+  };
+
   private _route: string;
 
   constructor(service = new CarService(), route = '/cars') {
