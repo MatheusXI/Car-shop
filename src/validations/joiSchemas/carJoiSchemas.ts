@@ -3,7 +3,7 @@ import { Car } from '../../interfaces/CarInterface';
 
 export default class CarJoi {
   protected carSchema = Joi.object({
-    _id: Joi.string(),
+    _id: Joi.string().min(24),
     model: Joi.string().min(3).required(),
     year: Joi.number().min(1900).max(2022).required(),
     color: Joi.string().min(3).required(),

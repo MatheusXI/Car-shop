@@ -12,7 +12,7 @@ export default abstract class MongoModel<T> implements Model<T> {
     this.model.findOne({ _id: str });
 
   update = async (str: string, obj: T): Promise<T | null> => {
-    this.model.updateOne({ _id: str }, obj, { upsert: true });
+    await this.model.updateOne({ _id: str }, { ...obj });
     return this.model.findOne({ _id: str });
   };
 

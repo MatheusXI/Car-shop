@@ -28,11 +28,11 @@ export default abstract class Controller<T> {
     res: Response<T | ResponseError>,
     next: NextFunction
   ): Promise<typeof res | void>;
-  // abstract update(
-  //   req: Request,
-  //   res: Response<T | ResponseError>,
-  //   next: NextFunction
-  // ): Promise<typeof res | void>;
+  abstract update(
+    req: Request,
+    res: Response<T | ResponseError>,
+    next: NextFunction
+  ): Promise<typeof res | void>;
   // abstract delete(
   //   req: Request,
   //   res: Response<T | ResponseError>,
