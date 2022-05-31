@@ -52,4 +52,9 @@ export default class CarService extends MongoService<Car> {
     const updatedCar = await this.model.update(id, obj);
     return updatedCar;
   };
+
+  delete = async (id: string) => {
+    await this.validateId(id);
+    return this.model.delete(id);
+  };
 }

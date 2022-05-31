@@ -1,5 +1,5 @@
-import { Model as M, Document } from 'mongoose';
-import { Model } from '../../interfaces/ModelInterface';
+import { Model as M, Document } from "mongoose";
+import { Model } from "../../interfaces/ModelInterface";
 
 export default abstract class MongoModel<T> implements Model<T> {
   constructor(protected model: M<T & Document>) {}
@@ -17,7 +17,7 @@ export default abstract class MongoModel<T> implements Model<T> {
   };
 
   delete = async (str: string): Promise<T | null> => {
-    this.model.deleteOne({ _id: str });
+    await this.model.deleteOne({ _id: str });
     return this.model.findOne({ _id: str });
   };
 }
