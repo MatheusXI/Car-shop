@@ -41,7 +41,7 @@ export default class CarService extends MongoService<Car> {
   };
 
   readOne = async (id: string) => {
-    this.validateId(id);
+    await this.validateId(id);
     const car = await this.model.readOne(id);
     return car;
   };
