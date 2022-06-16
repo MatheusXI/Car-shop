@@ -48,7 +48,7 @@ export default class MotorcycleService extends MongoService<Motorcycle> {
   };
 
   update = async (id: string, obj: Motorcycle) => {
-    await this.validateBody(obj);
+    this.validateBody(obj);
     await this.validateId(id);
     const updatedCar = await this.model.update(id, obj);
     return updatedCar;

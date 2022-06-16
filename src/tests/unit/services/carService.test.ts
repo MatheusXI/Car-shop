@@ -13,7 +13,9 @@ describe('Testa o carService', () => {
     const modelMock = {
         read: Sinon.stub().resolves(mockResults),
         readOne: Sinon.stub().resolves(mockResult),
-        create:  Sinon.stub().resolves(mockResult)
+        create:  Sinon.stub().resolves(mockResult),
+        update: Sinon.stub().resolves(mockResult),
+        delete: Sinon.stub().resolves(mockResult),
     } as unknown as CarModel
 
     const carService = new CarService(modelMock)
@@ -34,6 +36,20 @@ describe('Testa o carService', () => {
         it('Testa se a função retorna os valores corretos', async () => {
 
         const car = await carService.create(mockResult);
+        expect(car).to.be.deep.eq(mockResult)
+        })
+    });
+    describe('Testa a função update()', () => {
+        it('Testa se a função retorna os valores corretos', async () => {
+
+        const car = await carService.update('62aa2f5058bd0c3cb2a0f2a8',mockResult);
+        expect(car).to.be.deep.eq(mockResult)
+        })
+    })
+    describe('Testa a função delete()', () => {
+        it('Testa se a função retorna os valores corretos', async () => {
+
+        const car = await carService.delete('62aa2f5058bd0c3cb2a0f2a8');
         expect(car).to.be.deep.eq(mockResult)
         })
     })
