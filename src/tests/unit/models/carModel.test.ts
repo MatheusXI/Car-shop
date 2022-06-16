@@ -1,0 +1,29 @@
+import { expect } from "chai";
+import { describe } from "mocha";
+import mongoose from "mongoose";
+import Sinon from "sinon";
+import CarModel from "../../../models/Car/carSchema";
+import { mockResult, mockResults } from "../mocks/mockSucess";
+import { Model as M, Document } from "mongoose";
+import { Car } from "../../../interfaces/CarInterface";
+
+describe("Testa a carModel", () => {
+  const mockDocument = {
+    find: Sinon.stub().resolves(mockResults),
+    findOne: Sinon.stub().resolves(mockResult),
+  } as unknown as M<Car & Document>;
+
+  const carModel = new CarModel(mockDocument);
+    describe("Testa a função read()", () => {
+        it("testa se a função retorna os valores corretos", async () => {
+        const cars = await carModel.read();
+        expect(cars).to.be.eq(mockResults);
+        });
+  });
+  describe("Testa a função readOne()", () => {
+    it("testa se a função retorna os valores corretos", async () => {
+    const car = await carModel.readOne('62aa2f5058bd0c3cb2a0f2a8');
+    expect(car).to.be.eq(mockResult);
+    });
+});  
+});

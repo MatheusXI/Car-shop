@@ -16,7 +16,6 @@ export default class CarService extends MongoService<Car> {
   };
 
   private validateId = async (id: string) => {
-    const isValid = await this.model.readOne(id);
     if (id.length < 24) {
       throw new CustomError(
         400,
@@ -24,6 +23,7 @@ export default class CarService extends MongoService<Car> {
         'cast',
       );
     }
+    const isValid = await this.model.readOne(id);
     console.log(isValid, 'isvalid');
     if (!isValid) throw new CustomError(404, 'Object not found', 'cast');
   };
@@ -41,13 +41,13 @@ export default class CarService extends MongoService<Car> {
   };
 
   readOne = async (id: string) => {
+    this.validateId(id);
     const car = await this.model.readOne(id);
-    if (!car) throw new CustomError(404, 'Object not found', 'cast');
     return car;
   };
 
   update = async (id: string, obj: Car) => {
-    await this.validateBody(obj);
+    this.validateBody(obj);
     await this.validateId(id);
     const updatedCar = await this.model.update(id, obj);
     return updatedCar;
