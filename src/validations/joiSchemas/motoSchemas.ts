@@ -11,7 +11,8 @@ export default class MotoJoi {
     status: Joi.boolean(),
     buyValue: Joi.number().integer().required(),
     category: Joi.string().valid('Street', 'Custom', 'Trail').required(),
-    engineCapacity: Joi.number().integer().max(2500).required(),
+    engineCapacity: Joi.number().integer().min(1).max(2500)
+      .required(),
   });
 
   public validate(obj: Motorcycle) {

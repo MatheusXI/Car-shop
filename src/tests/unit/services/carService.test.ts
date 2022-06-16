@@ -10,7 +10,12 @@ import { mockResult, mockResults } from "../mocks/mockSucess";
 
 
 describe('Testa o carService', () => {
-    const modelMock = {read: Sinon.stub().resolves(mockResults), readOne: Sinon.stub().resolves(mockResult)} as unknown as CarModel
+    const modelMock = {
+        read: Sinon.stub().resolves(mockResults),
+        readOne: Sinon.stub().resolves(mockResult),
+        create:  Sinon.stub().resolves(mockResult)
+    } as unknown as CarModel
+
     const carService = new CarService(modelMock)
     describe('Testa a função read()', () => {
         it('Testa se a função retorna os dados corretos', async() => {
@@ -22,6 +27,13 @@ describe('Testa o carService', () => {
         it('Testa se a função retorna os valores corretos', async () => {
 
         const car = await carService.readOne('62aa2f5058bd0c3cb2a0f2a8');
+        expect(car).to.be.deep.eq(mockResult)
+        })
+    })
+    describe('Testa a função create()', () => {
+        it('Testa se a função retorna os valores corretos', async () => {
+
+        const car = await carService.create(mockResult);
         expect(car).to.be.deep.eq(mockResult)
         })
     })
