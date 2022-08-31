@@ -1,7 +1,7 @@
 # TFC
 
 # Contexto
-Este projeto trata-se de uma ferramenta de back-office para armazenar e buscar dados de partidas de futebol em um campeonato, podendo atualizar, acrescentar ou excluir partidas. Esse projeto foi desenvolvido tentando seguir o Clean Code e os princípios de SOLID.
+Este projeto trata-se de uma ferramenta para aprofundar meus conhecimentos sopre POO. Nele desenvolvi classes genéricas para as três camadas do modelo de API Rest MSC, ultilizando MongoDB como banco de dados e Mongoose como ODM. 
 
 ## Técnologias usadas
 
