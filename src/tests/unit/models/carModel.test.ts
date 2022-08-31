@@ -1,6 +1,5 @@
 import { expect } from "chai";
 import { describe } from "mocha";
-import mongoose from "mongoose";
 import Sinon from "sinon";
 import CarModel from "../../../models/Car/carSchema";
 import { mockResult, mockResults } from "../mocks/mockSucess";

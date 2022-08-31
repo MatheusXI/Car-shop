@@ -1,13 +1,8 @@
 import * as sinon from "sinon";
 import chai from "chai";
-import chaiHttp = require("chai-http");
 import CarService from "../../../services/Car/carService";
-import server from "../../../server";
 import CarController from "../../../controllers/Car/carController";
-import MotoController from "../../../controllers/Moto/motoController";
 import { Request, Response, NextFunction } from "express";
-import Service from "../../../services/Service/Service";
-import { Car } from "../../../interfaces/CarInterface";
 import { mockResult, mockResults } from "../mocks/mockSucess";
 
 // chai.use(chaiHttp);
@@ -16,13 +11,6 @@ const { expect } = chai;
 
 // const carService = new CarService()
 
-const mockResultWrong = {
-  year: 1963,
-  color: "red",
-  buyValue: 3500000,
-  seatsQty: 2,
-  doorsQty: 2,
-};
 // server.startServer(3002)
 
 let request = {} as Request;
